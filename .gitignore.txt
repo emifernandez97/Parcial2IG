@@ -1,0 +1,6 @@
+# Archivos de NetBeans
+/build/
+/nbproject/private/
+
+# Archivos compilados de Java
+*.class

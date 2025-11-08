@@ -1,0 +1,12 @@
+# Archivos compilados de Java
+*.class
+
+# Archivos de NetBeans
+/build/
+/nbproject/private/
+
+# Archivos de IDE (generales)
+.idea/
+*.iml*.class
+/build/
+/nbproject/private/
