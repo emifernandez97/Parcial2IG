@@ -136,10 +136,11 @@ public class Casino {
      * Juega una única ronda de la partida.
      * El Controlador llamará a esto en un bucle.
      */
-    public void jugarUnaRonda() {
+    public java.util.List<String> jugarUnaRonda() {
         // El Scanner se pasa como 'null' porque ya no lo usamos para el Reroll
-        juego.jugarRonda(jugadores); 
+        java.util.List<String> logDeLaRonda = juego.jugarRonda(jugadores);
         this.rondasJugadas++;
+        return logDeLaRonda;
     }
 
     /**

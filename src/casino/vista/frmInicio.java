@@ -137,7 +137,7 @@ public class frmInicio extends javax.swing.JFrame {
 
         btnCargarJuego.setText("Cargar Juego");
 
-        cmbRondas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        cmbRondas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         cmbRondas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRondasActionPerformed(evt);

@@ -3,6 +3,7 @@ package casino.controlador;
 import casino.modelo.Casino;
 import casino.modelo.Jugador;
 import casino.vista.frmInicio; 
+import casino.vista.frmJuegoPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel; // Importante para manejar la JList
@@ -85,7 +86,8 @@ public class ControladorConfiguracion implements ActionListener {
         String dineroStr = this.vista.getTxtDineroInicial().getText();
         
         // (Obtenemos el item seleccionado, ej: "Novato")
-        String tipoStr = (String) this.vista.getCmbTipoJugador().getSelectedItem(); 
+        int indiceSeleccionado = this.vista.getCmbTipoJugador().getSelectedIndex();
+        int tipoInt; 
         
         int dineroInicial;
         
@@ -116,12 +118,17 @@ public class ControladorConfiguracion implements ActionListener {
         }
 
         // 4. Mapeo de Tipo de Jugador (Convertir String a int)
-        int tipoInt;
-        switch (tipoStr) {
-            case "Experto": tipoInt = 2; break;
-            case "VIP": tipoInt = 3; break;
-            default: tipoInt = 1; // Novato
-        }
+        switch (indiceSeleccionado) {
+        case 1: // El segundo item
+            tipoInt = 2; // Experto
+        break;
+        case 2: // El tercer item
+            tipoInt = 3; // VIP
+        break;
+        case 0: // El primer item
+        default:
+            tipoInt = 1; // Novato
+}
 
         // 5. Si todo está OK, le damos la orden al Modelo
         
@@ -180,8 +187,7 @@ public class ControladorConfiguracion implements ActionListener {
      * Contiene la lógica del botón "Iniciar Juego"
      */
     private void iniciarJuego() {
-        //[cite_start]// Validación de jugadores (del PDF) [cite: 63]
-        // (modelo.getJugadores() incluye a "La Casa", por eso comparamos con 3 y 5)
+        // 1. Validación de jugadores (del PDF)
         int totalJugadores = modelo.getJugadores().size();
         
         if (totalJugadores < 3 || totalJugadores > 5) { // 1 Casa + (2 a 4) Humanos
@@ -189,14 +195,28 @@ public class ControladorConfiguracion implements ActionListener {
             return;
         }
         
-        // ¡Todo listo para empezar!
-        this.vista.getLblManejoDeError().setText("¡Iniciando juego!");
+        // 2. Configuración final del Modelo
+        // (Aquí le pasamos las Rondas/Partidas seleccionadas al modelo)
+        // (Supongamos que tu 'cmbRondas' guarda un Integer)
+        // int rondasSeleccionadas = (Integer) this.vista.getCmbRondas().getSelectedItem();
+        // this.modelo.setRondasMaximas(rondasSeleccionadas);
+        
+        
         System.out.println("¡Iniciando el juego!");
         
-        // Aquí es donde ocultaríamos esta ventana
-        this.vista.setVisible(false);
+        // 3. Cerramos la ventana de configuración
+        this.vista.dispose(); // (Mejor que setVisible(false))
         
-        //[cite_start]// Y crearíamos la VentanaPrincipalJuego (Paso 3 del PDF) [cite: 66]
-        // (Eso lo haremos después)
+        // 4. Creamos la NUEVA Vista (la ventana de juego)
+        frmJuegoPrincipal vistaJuego = new frmJuegoPrincipal();
+        
+        // 5. Creamos el NUEVO Controlador, pasándole el MISMO modelo
+        ControladorJuego controladorJuego = new ControladorJuego(this.modelo, vistaJuego);
+        
+        // 6. Le decimos al nuevo controlador que cargue el estado inicial
+        controladorJuego.actualizarVistaInicial();
+        
+        // 7. Mostramos la ventana de juego
+        vistaJuego.setVisible(true);
     }
 }

@@ -5,7 +5,7 @@ public class JugadorNovato extends Jugador {
         super(nombre, apodo, dineroInicial);
     }
     @Override
-    public int calcularApuesta() { return 50; }
+    public int calcularApuesta() { return (int) (getDinero() * 0.10); }
     @Override
     public String obtenerTipoJugador() { return "Novato"; }
 }

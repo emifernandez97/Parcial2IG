@@ -3,6 +3,7 @@ package parcial2ig; // <-- ¡Importante! Porque está en ese paquete
 // 1. Importamos las 3 partes del MVC
 import casino.modelo.Casino;
 import casino.vista.frmInicio;
+import casino.vista.frmJuegoPrincipal;
 import casino.controlador.ControladorConfiguracion;
 import javax.swing.SwingUtilities;
 
@@ -20,6 +21,7 @@ public class Parcial2IG {
                 
                 // 2. Creamos la Vista (El salón)
                 frmInicio vista = new frmInicio();
+                frmJuegoPrincipal vistaDos = new frmJuegoPrincipal();
                 
                 // 3. Creamos el Controlador (El camarero)
                 //    y le damos acceso al Modelo y la Vista
