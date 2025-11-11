@@ -190,12 +190,15 @@ public class frmJuegoPrincipal extends javax.swing.JFrame {
         mnVer.setText("Ver");
 
         mniEstadisticas.setText("Estadisticas");
+        mniEstadisticas.setName("mnuEstadisticas"); // NOI18N
         mnVer.add(mniEstadisticas);
 
         mniRanking.setText("Ranking");
+        mniRanking.setName("mnuRanking"); // NOI18N
         mnVer.add(mniRanking);
 
         mniHistorial.setText("Historial");
+        mniHistorial.setName("mnuHistorial"); // NOI18N
         mnVer.add(mniHistorial);
 
         mnJuego.add(mnVer);

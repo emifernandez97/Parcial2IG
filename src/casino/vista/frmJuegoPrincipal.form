@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="mnJuego">
       <SubComponents>
@@ -29,16 +29,19 @@
             <MenuItem class="javax.swing.JMenuItem" name="mniEstadisticas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Estadisticas"/>
+                <Property name="name" type="java.lang.String" value="mnuEstadisticas" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniRanking">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ranking"/>
+                <Property name="name" type="java.lang.String" value="mnuRanking" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniHistorial">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Historial"/>
+                <Property name="name" type="java.lang.String" value="mnuHistorial" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
