@@ -266,7 +266,9 @@ public class ControladorConfiguracion implements ActionListener {
 
 	// 6. Le decimos al nuevo controlador que cargue el estado inicial
 	controladorJuego.actualizarVistaInicial();
-
+        
+        vistaJuego.conectarMenu(controladorJuego);
+        
 	// 7. Mostramos la ventana de juego
 	vistaJuego.setVisible(true);
   }

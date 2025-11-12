@@ -17,6 +17,21 @@ public class frmHistorial extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void setHistorial(java.util.List<report.PartidaResumen> ultimas3) {
+    // Crear un modelo de lista para mostrar los textos
+    javax.swing.DefaultListModel<String> model = new javax.swing.DefaultListModel<>();
+
+    for (var p : ultimas3) {
+        model.addElement(String.format(
+            "PARTIDA #%d - Ganador: %s | Rondas: %d de %d",
+            p.numero(), p.ganador(), p.rondasJugadas(), p.rondasTotales()
+        ));
+    }
+
+    jList1.setModel(model);          // usás tu JList
+    jList1.setVisibleRowCount(3);    // opcional, muestra solo las últimas 3
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +45,7 @@ public class frmHistorial extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setText("Historial");
@@ -53,18 +68,18 @@ public class frmHistorial extends javax.swing.JFrame {
                         .addGap(165, 165, 165)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();

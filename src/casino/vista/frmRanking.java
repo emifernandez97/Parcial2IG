@@ -16,6 +16,28 @@ public class frmRanking extends javax.swing.JFrame {
     public frmRanking() {
         initComponents();
     }
+    public void setRanking(java.util.List<report.JugadorResumen> data) {
+    javax.swing.table.DefaultTableModel m =
+        (javax.swing.table.DefaultTableModel) jTable2.getModel(); // <-- usa el nombre real de tu JTable
+    m.setRowCount(0);
+    for (var j : data) {
+        m.addRow(new Object[]{ j.nombre(), j.tipo(), j.dinero(), j.victorias() });
+    }
+    var sorter = new javax.swing.table.TableRowSorter<>(m);
+    jTable2.setRowSorter(sorter);
+    sorter.setSortKeys(java.util.List.of(
+        new javax.swing.RowSorter.SortKey(2, javax.swing.SortOrder.DESCENDING)
+    ));
+    sorter.sort();
+
+    var dineroRenderer = new javax.swing.table.DefaultTableCellRenderer() {
+        @Override protected void setValue(Object v) {
+            if (v instanceof Number n) setText(String.format("$ %,.2f", n.doubleValue()));
+            else super.setValue(v);
+        }
+    };
+    jTable2.getColumnModel().getColumn(2).setCellRenderer(dineroRenderer);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +52,7 @@ public class frmRanking extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -44,13 +66,14 @@ public class frmRanking extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        jTable2.setName(""); // NOI18N
         jScrollPane2.setViewportView(jTable2);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -117,7 +140,7 @@ public class frmRanking extends javax.swing.JFrame {
                 new frmRanking().setVisible(true);
             }
         });
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

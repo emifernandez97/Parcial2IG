@@ -319,7 +319,10 @@ public class frmJuegoPrincipal extends javax.swing.JFrame {
         return mniSalir;
     }
     
-    
+    public void conectarMenu(casino.controlador.ControladorJuego ctrl) {
+    new casino.controlador.ControladorMenu(this, ctrl);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguientePartida;

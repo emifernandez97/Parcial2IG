@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel; // Para manejar la JTable
 
 public class ControladorJuego implements ActionListener {
 
-  private Casino modelo;
+  public Casino modelo;
   private frmJuegoPrincipal vista;
   private DefaultTableModel tableModel;
 
@@ -235,5 +235,24 @@ public class ControladorJuego implements ActionListener {
 	// 4. Invierte los botones
 	this.vista.getBtnSiguienteRonda().setEnabled(true);
 	this.vista.getBtnSiguientePartida().setEnabled(false);
+  }
+  
+    private void DatosReporte() {
+	// Actualiza la JTable con el dinero y victorias
+	int fila = 0;
+	for (Jugador j : modelo.getJugadores()) {
+	  if (j instanceof JugadorCasino) {
+		continue;
+	  }
+
+	  tableModel.setValueAt(j.getDinero(), fila, 2); // Columna Dinero
+	  tableModel.setValueAt(j.calcularApuesta(), fila, 3);
+	  tableModel.setValueAt(j.getUltimoResultadoDados(), fila, 4);
+	  tableModel.setValueAt(j.getPartidasGanadas(), fila, 5); // Columna Victorias
+
+	  // (La apuesta y los dados se podrían actualizar, pero es más complejo)
+	  // (Por ahora, el log lo informa)
+	  fila++;
+	}
   }
 }

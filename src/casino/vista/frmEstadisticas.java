@@ -16,6 +16,23 @@ public class frmEstadisticas extends javax.swing.JFrame {
     public frmEstadisticas() {
         initComponents();
     }
+       
+    public void setEstadisticas(report.ReporteData d) {
+    // jLabel2: Mayor apuesta
+    jLabel2.setText("Mayor apuesta: " +
+        String.format("$ %,.2f", d.mayorApuestaMonto()) +
+        " (" + nz(d.mayorApuestaJugador()) + ")");
+
+    // jLabel3: Mejor puntaje de dados
+    jLabel3.setText("Mejor puntaje de dados: " +
+        d.mejorPuntajeDados() +
+        " (" + nz(d.mejorPuntajeJugador()) + ")");
+
+    // jLabel4: Afectados por trampas
+    jLabel4.setText("Jugadores afectados por trampas: " + d.afectadosPorTrampas());
+}
+
+private static String nz(String s) { return s == null || s.isBlank() ? "-" : s; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +49,7 @@ public class frmEstadisticas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setText("Estadisticas");
