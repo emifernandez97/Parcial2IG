@@ -5,3 +5,6 @@
 
 * Video Act 5: https://vimeo.com/1135957350/5e9a04ff8c
 * LINK DOCCUMENTO IA act 5: https://docs.google.com/document/d/1LUuzN-90_iNLS0W7qoMFuSeWmuX22W7WYsZlbYV9bZM/edit?usp=sharing
+
+* Video act 4: https://vimeo.com/1135979922/1e522472e9
+*Link act 4 ia: https://chatgpt.com/share/69141e34-4df8-8004-a01a-1de1ad91ad0a
